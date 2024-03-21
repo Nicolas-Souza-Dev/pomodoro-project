@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Timer</title>
-<link rel="stylesheet" href="src/styles/style.css">
-</head>
-<body>
-<div class="timer-container">
-    <div class="timer-display">00:00.000</div>
-    <button id="startBtn" onclick="startTimer()">Iniciar Timer</button>
-    <button id="stopBtn" onclick="stopTimer()" style="display: none;">Parar Timer</button>
-    <button id="resetBtn" onclick="resetTimer()" style="display: none;">Resetar Timer</button>
-</div>
-<script src="src/scripts/script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+    <link rel="stylesheet" href="src/styles/style.css" />
+    <link rel="stylesheet" href="./src/styles/reset.css" />
+  </head>
+  <body>
+    <div class="timer-container">
+      <div class="timer-display">00:00.000</div>
+      <button id="startBtn" onclick="startTimer()">Iniciar Timer</button>
+      <button id="stopBtn" onclick="stopTimer()" style="display: none">
+        Parar Timer
+      </button>
+      <button id="resetBtn" onclick="resetTimer()" style="display: none">
+        Resetar Timer
+      </button>
+    </div>
+    <script src="src/scripts/script.js"></script>
+    <script src="./src/scripts/exerciseTimer.js"></script>
+  </body>
 </html>
-
