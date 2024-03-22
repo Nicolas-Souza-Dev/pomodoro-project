@@ -3,7 +3,7 @@ let stretching = [];
 async function GetStretchingExercises() {
   const options = {
     method: "GET",
-    headers: { "x-api-key": "kp+TrnjIj077wADxI9ivnQ==vZPzz4ccNYz4jmNp" },
+    headers: { "x-api-key": "Sua_Key" },
   }; // Fala o método e adiciona a minha chave da api na requisição
 
   const url = `https://api.api-ninjas.com/v1/exercises?type=stretching`; // URL da apiNinja para buscar apenas do tipo stretching
