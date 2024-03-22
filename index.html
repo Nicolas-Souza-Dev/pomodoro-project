@@ -10,13 +10,22 @@
   <body>
     <div class="timer-container">
       <div class="timer-display">00:00.000</div>
-      <button id="startBtn" onclick="startTimer()">Iniciar Timer</button>
-      <button id="stopBtn" onclick="stopTimer()" style="display: none">
-        Parar Timer
-      </button>
-      <button id="resetBtn" onclick="resetTimer()" style="display: none">
-        Resetar Timer
-      </button>
+      <div class="timer-content">
+        <button id="startBtn" onclick="startTimer()">Iniciar Timer</button>
+        <button id="stopBtn" onclick="stopTimer()" style="display: none">
+          Parar Timer
+        </button>
+        <button id="resetBtn" onclick="resetTimer()" style="display: none">
+          Resetar Timer
+        </button>
+      </div>
+    </div>
+    <div class="exercise-container">
+      <h2>Clique no botão para buscar um exercício</h2>
+      <div class="exercise-content">
+        <button onclick="GetExercise()">Busca exercício</button>
+        <button onclick="log()">Teste console log</button>
+      </div>
     </div>
     <script src="src/scripts/script.js"></script>
     <script src="./src/scripts/exerciseTimer.js"></script>
