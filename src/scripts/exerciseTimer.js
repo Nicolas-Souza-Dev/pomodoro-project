@@ -1,6 +1,6 @@
-let stretching = [];
+let exercises = [];
 
-async function GetStretchingExercises() {
+async function GetExercise() {
   const options = {
     method: "GET",
     headers: { "x-api-key": "kp+TrnjIj077wADxI9ivnQ==vZPzz4ccNYz4jmNp" },
@@ -8,14 +8,20 @@ async function GetStretchingExercises() {
 
   const url = `https://api.api-ninjas.com/v1/exercises?type=stretching`; // URL da apiNinja para buscar apenas do tipo stretching
 
-  await fetch(url, options)
-    .then((res) => res.json())
-    .then((data) => {
-      stretching = data;
-      console.log(stretching);
-    })
-    .catch((err) => {
-      console.log(`error ${err}`);
-    });
+  try {
+    let res = await fetch(url, options);
+    exercises = await res.json();
+  } catch (error) {
+    console.log(error);
+  }
 }
-GetStretchingExercises();
+
+function selectRandomExercise(exercise) {
+  let randomId = Math.floor(Math.random() * exercise.length);
+  return exercise[randomId];
+}
+
+function log() {
+  let randomExercise = selectRandomExercise(exercises);
+  console.log(randomExercise);
+}
