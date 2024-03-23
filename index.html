@@ -6,8 +6,63 @@
     <title>Timer</title>
     <link rel="stylesheet" href="src/styles/style.css" />
     <link rel="stylesheet" href="./src/styles/reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
   </head>
-  <body>
+
+
+  <body id="body">
+    <div class="container-body">
+        <div id="body-conteudo">
+            <div id="circulo"></div>
+            <button id="botao-iniciar" onclick="startTimer()">
+                INICIAR
+            </button>
+
+            <div id="containerTimerFoco" style="display: none">
+                <div>
+                    &#x25CF; Hora de focar &#x25CF;
+                </div>
+                <div class="timerDisplay">
+                    25:00.00
+                </div>
+
+                <div class="acoesFoco">
+                    <button id="botao-pausar" onclick="pauseTimer()">
+                        PAUSAR
+                    </button>
+                    <button id="botao-retomar" onclick="retomarTimer()" style="display: none">
+                        RETOMAR
+                    </button>
+                    <button id="botao-stop" onclick="interromperTimer()" style="display: none">
+                        INTERROMPER
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- <div id="containerTimerDescanso" style="display: none">
+                <div>
+                    &#x25CF; Hora de descansar &#x25CF;
+                </div>
+                <div class="timer">
+                    5:00.00
+                </div>
+
+                <div class="container-alongamento-concluido">
+                    <div id="alogamento">
+                        Hiperextensão do trapézio ai
+                    </div>
+                    <button id="botao-concluido"> CONCLUÍDO </button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+</body>
+
+  <!-- <body>
     <div class="timer-container">
       <div class="timer-display">00:00.000</div>
       <div class="timer-content">
@@ -19,14 +74,14 @@
           Resetar Timer
         </button>
       </div>
-    </div>
-    <div class="exercise-container">
+    </div> -->
+    <!-- <div class="exercise-container">
       <h2>Clique no botão para buscar um exercício</h2>
       <div class="exercise-content">
         <button onclick="GetExercise()">Busca exercício</button>
         <button onclick="log()">Teste console log</button>
       </div>
-    </div>
+    </div> -->
     <script src="src/scripts/script.js"></script>
     <script src="./src/scripts/exerciseTimer.js"></script>
   </body>
