@@ -30,7 +30,7 @@ function resetTimer() {
   document.getElementById("resetBtn").style.display = "none"; // Esconde o botão de reset
 }
 
-function updateTimer() {
+async function updateTimer() {
   milliseconds++; // Incrementa os milissegundos
   const displayElement = document.querySelector(".timer-display"); // Seleciona o elemento que exibe o timer
   const minutes = Math.floor((milliseconds / 6000) % 60); // Calcula os minutos
@@ -40,10 +40,21 @@ function updateTimer() {
     (seconds < 10 ? "0" : "") + seconds
   }.${(milisecs < 10 ? "00" : milisecs < 100 ? "0" : "") + milisecs}`; // Atualiza o display com o tempo formatado
 
-  if (minutes === 25 && seconds === 0 && milisecs === 0) {
+  if (minutes === 0 && seconds === 3 && milisecs === 0) {
     stopTimer();
-    alert(
-      "Pomodoro completo! Agora aperte o botão para saber o exercício que fará por 5 minutos."
-    ); // Exibe uma mensagem informando que o Pomodoro foi completado
+    await GetStretchingExercises();
+    document.getElementById('alongamento').style.display ="block"; // Exibe a div que vai mostar o alongamento
+    exibirAlongamento(); // Exibe um alongamento após terminar o tempo do Timer Pomodoro
   }
 }
+
+function exibirAlongamento() {
+  let randomIndex = Math.floor(Math.random() * stretchingData.length);
+  let exercicio = stretchingData[randomIndex];
+  document.getElementById("nomeAlongamento").innerText = exercicio.name;
+}
+
+  function concluirAlongamento() {
+    document.getElementById("alongamento").style.display = "none"; // Esconde a div de alongamento
+    resetTimer(); // Reseta o timer após concluir o alongamento
+  }

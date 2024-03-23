@@ -19,3 +19,12 @@ async function GetStretchingExercises() {
     });
 }
 GetStretchingExercises();
+
+function exibirAlongamento() {
+  let randomIndex = Math.floor(Math.random() * stretchingData.length);
+  let exercicio = stretchingData[randomIndex];
+  document.getElementById("nomeAlongamento").innerText = exercicio.name;
+}
+
+
+
