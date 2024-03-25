@@ -74,15 +74,20 @@ button{
   font-size: 7.594em;
   font-weight: 400;
   width: 100vh;
-  padding: 0 100px;
+  margin: 20px 0;
+  text-align: center;
+  
 }
 
-.acoesFoco{
+.acoesFoco, .acoesDescanso{
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  width: 380px;
+  justify-content: center;
 }
 
-#botao-stop, #botao-pausar, #botao-retomar {
+#botao-stop, .botao-pausar, #botao-alongar, .botao-retomar, .botao-avancar {
   border-radius: 50px;
   color: var(--rosa1);
   background-color: white;
@@ -93,7 +98,7 @@ button{
   line-height: 50px;
 }
 
-#botao-pausar, #botao-stop{
+.botao-pausar, #botao-stop, .botao-avancar{
   background-color: rgba(255,255,255,0);
   color: white;
   border: solid 1px white;
@@ -107,12 +112,12 @@ button{
   align-items: center;
 }
 
-.container-alongamento-concluido {
+#container-alongamento-concluido {
   display: flex;
   border-radius: 50px;
   color: var(--rosa1);
   background-color: white;
-  width: auto;
+  flex: 1;
   padding-left: 30px;
   height: 50px;
   text-align: center;
@@ -120,17 +125,20 @@ button{
   align-items: center;
   justify-content: space-between;
   border: solid 1px white;
+}
 
+#exercise-content{
+  flex: 1;
 }
 
 #botao-concluido {
   border-radius: 50px;
-  color: white;
   background-image: linear-gradient(to right bottom, #da3d72, #df4187, #e2479d, #e151b4, #dd5ccb);
-  width: 180px;
+  width: 50px;
   height: 50px;
-  text-align: center;
-  line-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 15px;
 }
 
@@ -151,3 +159,6 @@ button{
       height: 100vh
   }
 }
+
+
+
