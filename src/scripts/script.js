@@ -43,18 +43,12 @@ async function updateTimer() {
   if (minutes === 0 && seconds === 3 && milisecs === 0) {
     stopTimer();
     await GetStretchingExercises();
-    document.getElementById('alongamento').style.display ="block"; // Exibe a div que vai mostar o alongamento
+    document.getElementById("alongamento").style.display = "block"; // Exibe a div que vai mostrar o alongamento
     exibirAlongamento(); // Exibe um alongamento após terminar o tempo do Timer Pomodoro
   }
 }
 
-function exibirAlongamento() {
-  let randomIndex = Math.floor(Math.random() * stretchingData.length);
-  let exercicio = stretchingData[randomIndex];
-  document.getElementById("nomeAlongamento").innerText = exercicio.name;
+function concluirAlongamento() {
+  document.getElementById("alongamento").style.display = "none"; // Esconde a div de alongamento
+  resetTimer(); // Reseta o timer após concluir o alongamento
 }
-
-  function concluirAlongamento() {
-    document.getElementById("alongamento").style.display = "none"; // Esconde a div de alongamento
-    resetTimer(); // Reseta o timer após concluir o alongamento
-  }

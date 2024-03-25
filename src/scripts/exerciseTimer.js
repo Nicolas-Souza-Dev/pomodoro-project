@@ -1,30 +1,50 @@
-let stretching = [];
+let exercises = [];
+let usedExercises = [];
+let exerciseCounter = 0;
 
 async function GetStretchingExercises() {
   const options = {
     method: "GET",
-    headers: { "x-api-key": "Sua_Api_Key" },
+    headers: { "x-api-key": "Sua_API_Key" },
   }; // Fala o método e adiciona a minha chave da api na requisição
 
   const url = `https://api.api-ninjas.com/v1/exercises?type=stretching`; // URL da apiNinja para buscar apenas do tipo stretching
 
-  await fetch(url, options)
-    .then((res) => res.json())
-    .then((data) => {
-      stretching = data;
-      console.log(stretching);
-    })
-    .catch((err) => {
-      console.log(`error ${err}`);
-    });
+  try {
+    let res = await fetch(url, options);
+    exercises = await res.json();
+  } catch (error) {
+    console.log(error);
+  }
 }
-GetStretchingExercises();
+
+function selectRandomExercise() {
+  if (usedExercises.length === exercises.length || exerciseCounter >= 10) {
+    // verifica se o contador e os execícios usados então em 10 e reseta
+    usedExercises = [];
+    exerciseCounter = 0;
+  }
+
+  let remainingExercises = exercises.filter(
+    (exercise) => !usedExercises.includes(exercise.id) // verifica quais exercícios faltam a ser feito
+  );
+
+  if (remainingExercises.length === 0) {
+    // If all exercises have been used, reset
+    usedExercises = [];
+    remainingExercises = exercises;
+  }
+
+  let randomIndex = Math.floor(Math.random() * remainingExercises.length);
+  let randomExercise = remainingExercises[randomIndex];
+
+  usedExercises.push(randomExercise.id);
+  exerciseCounter++;
+
+  return randomExercise;
+}
 
 function exibirAlongamento() {
-  let randomIndex = Math.floor(Math.random() * stretchingData.length);
-  let exercicio = stretchingData[randomIndex];
-  document.getElementById("nomeAlongamento").innerText = exercicio.name;
+  let randomExercise = selectRandomExercise();
+  document.getElementById("nomeAlongamento").innerText = randomExercise.name;
 }
-
-
-
