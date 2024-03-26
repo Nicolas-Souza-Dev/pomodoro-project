@@ -2,7 +2,7 @@ let exercises = [];
 let usedExercises = [];
 let exerciseCounter = 0;
 
-async function GetStretchingExercises() {
+async function GetExercise() {
   const options = {
     method: "GET",
     headers: { "x-api-key": "Sua_API_Key" },
@@ -19,6 +19,7 @@ async function GetStretchingExercises() {
 }
 
 function selectRandomExercise() {
+  // Aqui na feature 5 tem que ter a logica do local storage em relação ao usedExercises e exerciseCounter
   if (usedExercises.length === exercises.length || exerciseCounter >= 10) {
     // verifica se o contador e os execícios usados então em 10 e reseta
     usedExercises = [];
@@ -30,7 +31,7 @@ function selectRandomExercise() {
   );
 
   if (remainingExercises.length === 0) {
-    // If all exercises have been used, reset
+    // Se todos os exercicios foram usados reseta
     usedExercises = [];
     remainingExercises = exercises;
   }
