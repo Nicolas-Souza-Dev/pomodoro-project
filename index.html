@@ -1,68 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Timer</title>
-    <link rel="stylesheet" href="src/styles/style.css" />
-    <link rel="stylesheet" href="./src/styles/reset.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timer</title>
+  <link rel="stylesheet" href="src/styles/style.css" />
+  <link rel="stylesheet" href="./src/styles/reset.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+</head>
 
 
-  <body id="body">
-    <div class="container-body">
-        <div id="body-conteudo">
-            <div id="circulo"></div>
-            <button id="botao-iniciar" onclick="startTimer()">
-                INICIAR
-            </button>
+<body id="body">
+  <div class="container-body">
+    <div id="body-conteudo">
+      <div id="circulo"></div>
+      <button id="botao-iniciar" onclick="startTimer()">
+        INICIAR
+      </button>
 
-            <div id="containerTimerFoco" style="display: none">
-                <div>
-                    &#x25CF; Hora de focar &#x25CF;
-                </div>
-                <div class="timerDisplay">
-                    25:00.00
-                </div>
-
-                <div class="acoesFoco">
-                    <button id="botao-pausar" onclick="pauseTimer()">
-                        PAUSAR
-                    </button>
-                    <button id="botao-retomar" onclick="retomarTimer()" style="display: none">
-                        RETOMAR
-                    </button>
-                    <button id="botao-stop" onclick="interromperTimer()" style="display: none">
-                        INTERROMPER
-                    </button>
-                </div>
-            </div>
-
-
-            <!-- <div id="containerTimerDescanso" style="display: none">
-                <div>
-                    &#x25CF; Hora de descansar &#x25CF;
-                </div>
-                <div class="timer">
-                    5:00.00
-                </div>
-
-                <div class="container-alongamento-concluido">
-                    <div id="alogamento">
-                        Hiperextensão do trapézio ai
-                    </div>
-                    <button id="botao-concluido"> CONCLUÍDO </button>
-                </div>
-            </div> -->
+      <div id="containerTimerFoco" style="display: none">
+        <div>
+          &#x25CF; Hora de focar &#x25CF;
         </div>
+        <div class="timerDisplay">
+          25:00.00
+        </div>
+
+        <div class="acoesFoco">
+          <button class="botao-pausar" onclick="pauseTimer(this.parentNode.parentNode)">
+            PAUSAR
+          </button>
+          <button class="botao-avancar" onclick="avancar(this.parentNode.parentNode)">
+            AVANÇAR
+          </button>
+          <button class="botao-retomar" onclick="retomarTimer(this.parentNode.parentNode)" style="display: none">
+            RETOMAR
+          </button>
+          <button id="botao-stop" onclick="interromperTimer()" style="display: none">
+            INTERROMPER
+          </button>
+        </div>
+      </div>
+
+
+      <div id="containerTimerDescanso" style="display: none">
+        <div>
+          &#x25CF; Hora de descansar &#x25CF;
+        </div>
+        <div class="timerDisplay">
+          5:58
+        </div>
+        <div class="acoesDescanso">
+
+          <button class="botao-pausar" onclick="pauseTimer(this.parentNode.parentNode)">
+            PAUSAR
+          </button>
+          <button id="botao-alongar" onclick="alongarSe()">
+            ALONGAR-SE
+          </button>
+          <button class="botao-retomar" onclick="retomarTimer(this.parentNode.parentNode)" style="display: none">
+            RETOMAR
+          </button>
+          <button class="botao-avancar" style="display: none" onclick="avancar(this.parentNode.parentNode)">
+            AVANÇAR
+          </button>
+          <div id="container-alongamento-concluido" style="display: none">
+            <div id="exercise-content">
+              Hiperextensão do trapézio ai
+            </div>
+            <button id="botao-concluido" onclick="concluir()"> 
+              <img src="assets/check-mark.png" alt="check-mark" width="30px"> </button>
+          </div>
+        </div>
+
+
+      </div>
     </div>
+  </div>
 
 </body>
 
-  <!-- <body>
+<!-- <body>
     <div class="timer-container">
       <div class="timer-display">00:00.000</div>
       <div class="timer-content">
@@ -75,14 +96,15 @@
         </button>
       </div>
     </div> -->
-    <!-- <div class="exercise-container">
+<!-- <div class="exercise-container">
       <h2>Clique no botão para buscar um exercício</h2>
       <div class="exercise-content">
         <button onclick="GetExercise()">Busca exercício</button>
         <button onclick="log()">Teste console log</button>
       </div>
     </div> -->
-    <script src="src/scripts/script.js"></script>
     <script src="./src/scripts/exerciseTimer.js"></script>
-  </body>
+    <script src="src/scripts/script.js"></script>
+</body>
+
 </html>

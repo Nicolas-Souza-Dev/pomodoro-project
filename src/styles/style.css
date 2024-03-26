@@ -1,9 +1,8 @@
 :root {
-  --azul: #30334B;
-  --rosa1: #DA3D72;
-  --rosa2: #DD5CCB;
+  --azul: #30334b;
+  --rosa1: #da3d72;
+  --rosa2: #dd5ccb;
 }
-
 
 body {
   margin: 0;
@@ -15,20 +14,19 @@ body {
   justify-content: center;
   background-color: var(--azul);
   background-image: url(/./assets/foco.png);
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   font-size: 1em;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
 }
 
-button{
+button {
   all: unset;
   cursor: pointer;
 }
 
-
-#body-conteudo{
+#body-conteudo {
   flex: 1;
   display: flex;
   align-items: center;
@@ -36,53 +34,71 @@ button{
   color: white;
 }
 
-#circulo{
+#circulo {
   border-radius: 50%;
-  background-image: radial-gradient(circle, #da3d72, #df4187, #e2479d, #e151b4, #dd5ccb);
+  background-image: radial-gradient(
+    circle,
+    #da3d72,
+    #df4187,
+    #e2479d,
+    #e151b4,
+    #dd5ccb
+  );
   position: fixed;
   z-index: -1;
-
 }
 
 @keyframes grow {
   0% {
-      width: 0px;
-      height: 0px;
+    width: 0px;
+    height: 0px;
   }
 
   100% {
-      width: 100vh;
-      height: 100vh;
+    width: 100vh;
+    height: 100vh;
   }
 }
 
-
-
 #botao-iniciar {
   border-radius: 50px;
-  background-image: linear-gradient(to right bottom, #da3d72, #df4187, #e2479d, #e151b4, #dd5ccb);
+  background-image: linear-gradient(
+    to right bottom,
+    #da3d72,
+    #df4187,
+    #e2479d,
+    #e151b4,
+    #dd5ccb
+  );
   width: 180px;
   height: 50px;
   text-align: center;
   line-height: 50px;
-  
 }
-
 
 .timerDisplay {
   font-family: "Madimi One", sans-serif;
   font-size: 7.594em;
   font-weight: 400;
   width: 100vh;
-  padding: 0 100px;
+  margin: 20px 0;
+  text-align: center;
 }
 
-.acoesFoco{
+.acoesFoco,
+.acoesDescanso {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  width: 380px;
+  justify-content: center;
 }
 
-#botao-stop, #botao-pausar, #botao-retomar {
+#botao-stop,
+.botao-pausar,
+#botao-alongar,
+.botao-retomar,
+.botao-avancar {
   border-radius: 50px;
   color: var(--rosa1);
   background-color: white;
@@ -93,26 +109,27 @@ button{
   line-height: 50px;
 }
 
-#botao-pausar, #botao-stop{
-  background-color: rgba(255,255,255,0);
+.botao-pausar,
+#botao-stop,
+.botao-avancar {
+  background-color: rgba(255, 255, 255, 0);
   color: white;
   border: solid 1px white;
 }
 
-
-
-#containerTimerFoco,#containerTimerDescanso{
+#containerTimerFoco,
+#containerTimerDescanso {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.container-alongamento-concluido {
+#container-alongamento-concluido {
   display: flex;
   border-radius: 50px;
   color: var(--rosa1);
   background-color: white;
-  width: auto;
+  flex: 1;
   padding-left: 30px;
   height: 50px;
   text-align: center;
@@ -120,34 +137,44 @@ button{
   align-items: center;
   justify-content: space-between;
   border: solid 1px white;
+}
 
+#exercise-content {
+  flex: 1;
 }
 
 #botao-concluido {
   border-radius: 50px;
-  color: white;
-  background-image: linear-gradient(to right bottom, #da3d72, #df4187, #e2479d, #e151b4, #dd5ccb);
-  width: 180px;
+  background-image: linear-gradient(
+    to right bottom,
+    #da3d72,
+    #df4187,
+    #e2479d,
+    #e151b4,
+    #dd5ccb
+  );
+  width: 50px;
   height: 50px;
-  text-align: center;
-  line-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 15px;
 }
 
 @keyframes pulse {
   0% {
-      width: 100vh;
-      height: 100vh;
+    width: 100vh;
+    height: 100vh;
   }
 
   50% {
-      width: 0px;
-      height: 0px;
-      opacity: 20%;
+    width: 0px;
+    height: 0px;
+    opacity: 20%;
   }
 
   100% {
-      width: 100vh;
-      height: 100vh
+    width: 100vh;
+    height: 100vh;
   }
 }
