@@ -83,6 +83,7 @@ function avancar(local) {
 
 function interromperTimer() {
   clearInterval(timer); // Para o intervalo do timer
+
   timerRunning = false; // Desativa o timer
   milliseconds = 0; // Reseta os milissegundos
   containerTimerFoco.style.display = "none";
@@ -172,7 +173,7 @@ function updateExerciseTimer() {
 
   // (exerciseTimeLeft === 0) seria o tempo exato mas 290 e para poder fazer o teste
   if (exerciseTimeLeft === 290) {
-    stopExerciseTimer();
+    clearInterval(exerciseTimer);
     botaoConcluido.style.display = "block";
   }
   exerciseTimeLeft--;
@@ -194,9 +195,11 @@ function resumeExerciseTimer() {
 function concluir() {
   const timerDisplay = document.getElementById("exerciseTimerDisplay");
   timerDisplay.textContent = `05:00`;
-  exerciseTimeLeft == 300;
+  exerciseTimeLeft = 300;
   containerAlongamentoConcluido.style.display = "none";
   botaoAlongarSe.style.display = "block";
   containerTimerDescanso.style.display = "none";
+  botaoConcluido.style.display = "none";
+  botaoRetomar[1].style.display = "none";
   interromperTimer();
 }
