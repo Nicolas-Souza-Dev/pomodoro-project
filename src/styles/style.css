@@ -75,7 +75,7 @@ button {
   text-align: center;
   line-height: 50px;
 }
-
+#exerciseTimerDisplay,
 .timerDisplay {
   font-family: "Madimi One", sans-serif;
   font-size: 7.594em;
@@ -133,7 +133,6 @@ button {
   padding-left: 30px;
   height: 50px;
   text-align: center;
-  line-height: 50px;
   align-items: center;
   justify-content: space-between;
   border: solid 1px white;

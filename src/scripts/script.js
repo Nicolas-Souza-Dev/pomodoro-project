@@ -20,6 +20,8 @@ const botaoAlongarSe = document.getElementById("botao-alongar");
 let timer; // Variável para armazenar o identificador do setInterval
 let timerRunning = false; // Variável para controlar se o timer está em execução
 let milliseconds = 0; // Variável para armazenar os milissegundos
+let exerciseTimer;
+let exerciseTimeLeft = 300; // 5 minutes
 
 function startTimer() {
   if (!timerRunning) {
@@ -114,15 +116,19 @@ function retomarTimer(local) {
 function updateTimer() {
   milliseconds++; // Incrementa os milissegundos
   const displayElement = document.querySelector(".timerDisplay"); // Seleciona o elemento que exibe o timer
+
   const minutes = Math.floor((milliseconds / 6000) % 60); // Calcula os minutos
   const seconds = Math.floor((milliseconds / 100) % 60); // Calcula os segundos
   const milisecs = milliseconds % 100; // Calcula os milissegundos
+
   displayElement.textContent = `${(minutes < 10 ? "0" : "") + minutes}:${
     (seconds < 10 ? "0" : "") + seconds
   }`; // Atualiza o display com o tempo formatado
   // .${(milisecs < 10 ? "00" : milisecs < 100 ? "0" : "") + milisecs} Supressão da apresentação do milissegundos
 
-  if (minutes === 25 && seconds === 0 && milisecs === 0) {
+  // (minutes === 25 && seconds === 0 && milisecs === 0)  esse seria o código normal caso não precisa-se fazer o teste com 10 segundos
+
+  if (minutes === 0 && seconds === 10 && milisecs === 0) {
     TelaDescanso();
 
     // alert(
@@ -140,13 +146,57 @@ function TelaDescanso() {
   containerTimerDescanso.style.display = "flex";
 }
 
-function alongarSe() {
-  //chama a função que altera o html -----> GetExercise
+// Essa função é assíncrona e faz o fetch de exercícios para então mostrar o nome do alongamento e começar o timer do exercício
+async function alongarSe() {
+  await GetExercise();
   botaoAlongarSe.style.display = "none";
   containerAlongamentoConcluido.style.display = "flex";
+  await exibirAlongamento();
+  startExerciseTimer();
 }
 
+// Inicia o timer de exercício e atualiza a cada 1 segundo
+function startExerciseTimer() {
+  exerciseTimer = setInterval(updateExerciseTimer, 1000);
+}
+
+// A função de mudar o tempo mostrado no HTML que para quando o tempo restante chega ao valor desejado dentro do If
+function updateExerciseTimer() {
+  const minutes = Math.floor(exerciseTimeLeft / 60);
+  const seconds = exerciseTimeLeft % 60;
+
+  const timerDisplay = document.getElementById("exerciseTimerDisplay");
+  timerDisplay.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
+    .toString()
+    .padStart(2, "0")}`;
+
+  // (exerciseTimeLeft === 0) seria o tempo exato mas 290 e para poder fazer o teste
+  if (exerciseTimeLeft === 290) {
+    stopExerciseTimer();
+    botaoConcluido.style.display = "block";
+  }
+  exerciseTimeLeft--;
+}
+
+// Para o timer e mostra o botão para resumir o timer
+function stopExerciseTimer() {
+  clearInterval(exerciseTimer);
+  botaoRetomar[1].style.display = "block";
+}
+
+// Resume o timer e apaga o botão para resumir o timer
+function resumeExerciseTimer() {
+  startExerciseTimer();
+  botaoRetomar[1].style.display = "none";
+}
+
+// Conclui o alongamento assim resetando o timer de exercício e voltando para a tela inicial da aplicação
 function concluir() {
+  const timerDisplay = document.getElementById("exerciseTimerDisplay");
+  timerDisplay.textContent = `05:00`;
+  exerciseTimeLeft == 300;
   containerAlongamentoConcluido.style.display = "none";
   botaoAlongarSe.style.display = "block";
+  containerTimerDescanso.style.display = "none";
+  interromperTimer();
 }
