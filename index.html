@@ -48,30 +48,28 @@
 
       <div id="containerTimerDescanso" style="display: none">
         <div>
-          &#x25CF; Hora de descansar &#x25CF;
+          &#x25CF; Hora de exercitar &#x25CF;
         </div>
-        <div class="timerDisplay">
-          5:58
+        <div id="exerciseTimerDisplay">
+          05:00          
         </div>
         <div class="acoesDescanso">
 
-          <button class="botao-pausar" onclick="pauseTimer(this.parentNode.parentNode)">
+          <button class="botao-pausar" onclick="stopExerciseTimer()">
             PAUSAR
           </button>
-          <button id="botao-alongar" onclick="alongarSe()">
+          <button id="botao-alongar" onclick="alongarSe(this.parentNode.parentNode)">
             ALONGAR-SE
           </button>
-          <button class="botao-retomar" onclick="retomarTimer(this.parentNode.parentNode)" style="display: none">
+          
+          <button class="botao-retomar" onclick="resumeExerciseTimer()" style="display: none">
             RETOMAR
           </button>
-          <button class="botao-avancar" style="display: none" onclick="avancar(this.parentNode.parentNode)">
-            AVANÇAR
-          </button>
-          <div id="container-alongamento-concluido" style="display: none">
+         
+          <div id="container-alongamento-concluido"  style="display: none">
             <div id="exercise-content">
-              Hiperextensão do trapézio ai
             </div>
-            <button id="botao-concluido" onclick="concluir()"> 
+            <button id="botao-concluido" onclick="concluir()" style="display: none"> 
               <img src="assets/check-mark.png" alt="check-mark" width="30px"> </button>
           </div>
         </div>
@@ -83,26 +81,6 @@
 
 </body>
 
-<!-- <body>
-    <div class="timer-container">
-      <div class="timer-display">00:00.000</div>
-      <div class="timer-content">
-        <button id="startBtn" onclick="startTimer()">Iniciar Timer</button>
-        <button id="stopBtn" onclick="stopTimer()" style="display: none">
-          Parar Timer
-        </button>
-        <button id="resetBtn" onclick="resetTimer()" style="display: none">
-          Resetar Timer
-        </button>
-      </div>
-    </div> -->
-<!-- <div class="exercise-container">
-      <h2>Clique no botão para buscar um exercício</h2>
-      <div class="exercise-content">
-        <button onclick="GetExercise()">Busca exercício</button>
-        <button onclick="log()">Teste console log</button>
-      </div>
-    </div> -->
     <script src="./src/scripts/exerciseTimer.js"></script>
     <script src="src/scripts/script.js"></script>
 </body>
