@@ -25,7 +25,7 @@ let exercisesTranslated = [
 async function GetExercise() {
   const options = {
     method: "GET",
-    headers: { "x-api-key": "RKlKZlRsnbGSHIgoA4QEmwcTupyMFzXAk5h0Odm6" },
+    headers: { "x-api-key": "Sua_Api_Key" },
   }; // Fala o método e adiciona a minha chave da api na requisição
 
   const url = `https://api.api-ninjas.com/v1/exercises?type=stretching`; // URL da apiNinja para buscar apenas do tipo stretching
