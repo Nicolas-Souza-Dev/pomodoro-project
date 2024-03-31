@@ -2,6 +2,8 @@ let exercises = [];
 let usedExercises = [];
 let exerciseCounter = 0;
 
+const exerciseContent = document.getElementById("exercise-content");
+
 async function GetExercise() {
   const options = {
     method: "GET",
@@ -19,7 +21,10 @@ async function GetExercise() {
 }
 
 function selectRandomExercise() {
-  // Aqui na feature 5 tem que ter a logica do local storage em relação ao usedExercises e exerciseCounter
+  exerciseCounter = parseInt(localStorage.getItem("exerciseCounter")) || 0;
+  usedExercises = JSON.parse(localStorage.getItem("usedExercises")) || [];
+  // Pega do localstorage os dados caso tenha ou inicia com o valor inicial
+
   if (usedExercises.length === exercises.length || exerciseCounter >= 10) {
     // verifica se o contador e os execícios usados então em 10 e reseta
     usedExercises = [];
@@ -31,7 +36,7 @@ function selectRandomExercise() {
   );
 
   if (remainingExercises.length === 0) {
-    // Se todos os exercicios foram usados reseta
+    // Se todos os exercicios que falta foram usados e reseta
     usedExercises = [];
     remainingExercises = exercises;
   }
@@ -42,10 +47,14 @@ function selectRandomExercise() {
   usedExercises.push(randomExercise.id);
   exerciseCounter++;
 
+  localStorage.setItem("exerciseCounter", exerciseCounter);
+  localStorage.setItem("usedExercises", JSON.stringify(usedExercises));
+  // Salva no localStorage os exercícios e o contador
+
   return randomExercise;
 }
 
 function exibirAlongamento() {
   let randomExercise = selectRandomExercise();
-  document.getElementById("nomeAlongamento").innerText = randomExercise.name;
+  exerciseContent.innerText = randomExercise.name;
 }
